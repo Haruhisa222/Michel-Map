@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MyLocationLayerActivity">
+
+    <!-- Google Map Fragment -->
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- 紙地図オーバーレイ画像-->
+    <ImageView
+        android:id="@+id/overlay_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:src="@drawable/expo_map"
+        android:scaleType="fitCenter"
+        android:alpha="0.5"
+        android:clickable="false"
+        android:visibility="visible" />
+
+
+    <!-- 編集モード切替ボタン -->
+    <Button
+        android:id="@+id/edit_mode_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="編集モード ON"
+        android:layout_gravity="top|start"
+        android:layout_margin="16dp" />
+
+    <!-- 画像選択ボタン -->
+    <Button
+        android:id="@+id/select_image_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="紙地図画像を選択"
+        android:layout_gravity="bottom|start"
+        android:layout_margin="16dp"/>
+
+    <!-- 現在地表示用ボタン(オリジナル)-->
+    <ImageButton
+        android:id="@+id/btnMyLocation"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_gravity="end|top"
+        android:layout_margin="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/nowhereimages"
+        android:contentDescription="現在地" />
+
+    <!-- 現在地青丸ビュー -->
+    <com.example.myapplication6.MyLocationOverlay
+        android:id="@+id/myLocationOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <!-- 画面下にテキスト -->
+    <TextView
+        android:id="@+id/edit_mode_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="透過度"
+        android:textSize="16sp"
+        android:textColor="#000000"
+        android:background="#AAFFFFFF"
+        android:padding="8dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:visibility="gone" />
+
+
+    <!-- 編集用コントロール（透明度調整） -->
+    <LinearLayout
+        android:id="@+id/overlay_controls"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="30dp"
+        android:visibility="gone"
+        android:padding="5dp"
+        android:background="#AAFFFFFF">
+
+        <!-- 透明度スライダー -->
+        <SeekBar
+            android:id="@+id/alpha_seekbar"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:max="100"
+            android:progress="50"/>
+    </LinearLayout>
+
+
+</FrameLayout>
